@@ -35,6 +35,14 @@ function configure_zram_parameters() {
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 	MemTotal=${MemTotalStr:16:8}
 
+	if [[ "$(getprop vendor.post_boot.custom)" == "true" ]]; then
+	  echo "Device overrides post_boot, skipping $0"
+	  exit 0
+	fi
+
+	if [ -f /sys/devices/soc0/chip_family ]; then
+		chipfamily=`cat /sys/devices/soc0/chip_family`
+	fi
 	# Zram disk - 75% for < 2GB devices .
 	# For >2GB devices, size = 50% of RAM size. Limit the size to 4GB.
 
