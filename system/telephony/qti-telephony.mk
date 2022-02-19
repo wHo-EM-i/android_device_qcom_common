@@ -85,7 +85,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     telephony.lteOnCdmaDevice=1
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.ims.disableADBLogs=1 \
     persist.vendor.ims.disableDebugLogs=1 \
     persist.vendor.ims.disableIMSLogs=1 \
